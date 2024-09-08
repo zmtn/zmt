@@ -1,4 +1,17 @@
 <footer>
+  <script>
+	  document.addEventListener('DOMContentLoaded', function() {
+		const mermaidBlocks = document.querySelectorAll('pre code.language-mermaid');
+		mermaidBlocks.forEach(block => {
+		  const wrapper = document.createElement('div');
+		  wrapper.classList.add('mermaid');
+		  wrapper.innerHTML = block.textContent;
+		  block.parentNode.replaceWith(wrapper);
+		});
+		mermaid.initialize({ startOnLoad: true });
+	  });
+  </script>
+
   <hr />
   {{ if .Site.Params.social }}
     <p id="social">

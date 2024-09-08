@@ -73,3 +73,9 @@ title = "ZMT"
     url = "https://stackoverflow.com/users/23910950/likui"
 
   subtitle = "Many a little makes a mackle"
+ # config.toml
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
