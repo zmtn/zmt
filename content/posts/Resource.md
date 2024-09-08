@@ -17,5 +17,3 @@ draft = false
 * [sumnerevan](https://sumnerevans.com/)
 * [smol](https://github.com/colorchestra/smol)
 
-<iframe type="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=750 height=1086 src="https://music.163.com/song?id=2617670500&userid=48671723"></iframe>  
-
