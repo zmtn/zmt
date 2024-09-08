@@ -17,3 +17,7 @@ draft = false
 * [sumnerevan](https://sumnerevans.com/)
 * [smol](https://github.com/colorchestra/smol)
 
+---
+> 相关的博客
+
+* [[人格类型分类]]
