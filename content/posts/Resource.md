@@ -15,3 +15,4 @@ draft = false
 
 这个是资源文件
 * [sumnerevan](https://sumnerevans.com/)
+* [smol](https://github.com/colorchestra/smol)
