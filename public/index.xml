@@ -15,5 +15,12 @@
       <guid>https://zmta.vercel.app/posts/</guid>
       <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我的首页&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;数据生成失败&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>About</title>
+      <link>https://zmta.vercel.app/about/</link>
+      <pubDate>Sun, 08 Sep 2024 11:43:49 +0800</pubDate>
+      <guid>https://zmta.vercel.app/about/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;About me&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
   </channel>
 </rss>
