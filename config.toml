@@ -1,4 +1,4 @@
-baseURL = "https://zmta.vercel.app/"
+baseURL = "https://www.zmt.ac.cn"
 languageCode = "en-us"
 theme = "smigle"
 title = "ZMT"
@@ -72,4 +72,4 @@ title = "ZMT"
     name = "StackOverflow"
     url = "https://stackoverflow.com/users/3417846/ian-s-mcb"
 
-  subtitle = "Description about Blog Author"
+  subtitle = "KM"

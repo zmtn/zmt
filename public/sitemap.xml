@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://zmta.vercel.app/posts/hello/</loc>
+    <loc>https://www.zmt.ac.cn/posts/hello/</loc>
     <lastmod>2024-09-08T15:56:46+08:00</lastmod>
   </url><url>
-    <loc>https://zmta.vercel.app/posts/</loc>
+    <loc>https://www.zmt.ac.cn/posts/</loc>
     <lastmod>2024-09-08T15:56:46+08:00</lastmod>
   </url><url>
-    <loc>https://zmta.vercel.app/</loc>
+    <loc>https://www.zmt.ac.cn/</loc>
     <lastmod>2024-09-08T15:56:46+08:00</lastmod>
   </url><url>
-    <loc>https://zmta.vercel.app/about/</loc>
+    <loc>https://www.zmt.ac.cn/about/</loc>
     <lastmod>2024-09-08T11:43:49+08:00</lastmod>
   </url><url>
-    <loc>https://zmta.vercel.app/categories/</loc>
+    <loc>https://www.zmt.ac.cn/categories/</loc>
   </url><url>
-    <loc>https://zmta.vercel.app/tags/</loc>
+    <loc>https://www.zmt.ac.cn/tags/</loc>
   </url>
 </urlset>
