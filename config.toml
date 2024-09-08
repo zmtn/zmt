@@ -58,7 +58,7 @@ title = "ZMT"
 
   [[params.social]]
     name = "Email"
-    url = "likui@zmt.ac.cn"
+    url = "mailto:likui@zmt.ac.cn"
 
   [[params.social]]
     name = "Quizlet"
