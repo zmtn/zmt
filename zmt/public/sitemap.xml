@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://smigle-hugo-theme.netlify.app/posts/</loc>
+    <loc>https://zmta.vercel.app/posts/</loc>
     <lastmod>2024-09-08T11:43:49+08:00</lastmod>
   </url><url>
-    <loc>https://smigle-hugo-theme.netlify.app/</loc>
+    <loc>https://zmta.vercel.app/</loc>
     <lastmod>2024-09-08T11:43:49+08:00</lastmod>
   </url><url>
-    <loc>https://smigle-hugo-theme.netlify.app/categories/</loc>
+    <loc>https://zmta.vercel.app/categories/</loc>
   </url><url>
-    <loc>https://smigle-hugo-theme.netlify.app/tags/</loc>
+    <loc>https://zmta.vercel.app/tags/</loc>
   </url>
 </urlset>

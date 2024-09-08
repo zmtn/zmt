@@ -1,4 +1,4 @@
-baseURL = "https://smigle-hugo-theme.netlify.app/"
+baseURL = "https://zmta.vercel.app/"
 languageCode = "en-us"
 theme = "smigle"
 title = "ZMT"
