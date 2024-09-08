@@ -57,8 +57,8 @@ title = "ZMT"
     url = "https://github.com/zmtn"
 
   [[params.social]]
-    name = "GitLab"
-    url = "https://gitlab.com/ian-s-mcb"
+    name = "Email"
+    url = "likui@zmt.ac.cn"
 
   [[params.social]]
     name = "Quizlet"
