@@ -2,17 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/about/about/</loc>
-    <lastmod>2024-09-08T09:19:36+08:00</lastmod>
+    <loc>https://smigle-hugo-theme.netlify.app/posts/</loc>
+    <lastmod>2024-09-08T11:43:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
-    <lastmod>2024-09-08T09:19:36+08:00</lastmod>
+    <loc>https://smigle-hugo-theme.netlify.app/</loc>
+    <lastmod>2024-09-08T11:43:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-09-08T09:19:36+08:00</lastmod>
+    <loc>https://smigle-hugo-theme.netlify.app/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://smigle-hugo-theme.netlify.app/tags/</loc>
   </url>
 </urlset>

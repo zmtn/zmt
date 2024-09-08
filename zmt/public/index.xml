@@ -2,18 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ZMT</title>
-    <link>http://localhost:1313/</link>
+    <link>https://smigle-hugo-theme.netlify.app/</link>
     <description>Recent content on ZMT</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Sep 2024 09:19:36 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/about/</link>
-      <pubDate>Sun, 08 Sep 2024 09:19:36 +0800</pubDate>
-      <guid>http://localhost:1313/about/about/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;About me&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
-    </item>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://smigle-hugo-theme.netlify.app/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
