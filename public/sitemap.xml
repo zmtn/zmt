@@ -8,10 +8,16 @@
     <loc>https://www.zmt.ac.cn/categories/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
+    <loc>https://www.zmt.ac.cn/tags/embedded/</loc>
+    <lastmod>2024-09-10T20:10:19+08:00</lastmod>
+  </url><url>
     <loc>https://www.zmt.ac.cn/posts/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/categories/project/</loc>
+    <lastmod>2024-09-10T20:10:19+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/tags/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/</loc>
@@ -31,7 +37,5 @@
   </url><url>
     <loc>https://www.zmt.ac.cn/posts/hello/</loc>
     <lastmod>2024-09-08T15:56:46+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zmt.ac.cn/tags/</loc>
   </url>
 </urlset>
