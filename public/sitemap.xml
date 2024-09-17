@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.zmt.ac.cn/daily/</loc>
-    <lastmod>2024-09-17T09:12:35+08:00</lastmod>
+    <loc>https://www.zmt.ac.cn/categories/area/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/categories/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/tags/read/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/read/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/tags/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/read/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/</loc>
+    <lastmod>2024-09-17T09:24:24+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/daily/</loc>
     <lastmod>2024-09-17T09:12:35+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/daily/%E6%97%A5%E8%AE%B0%E8%AE%B0%E5%BD%95/</loc>
@@ -20,16 +38,10 @@
     <loc>https://www.zmt.ac.cn/posts/autosar/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
-    <loc>https://www.zmt.ac.cn/categories/</loc>
-    <lastmod>2024-09-10T20:10:19+08:00</lastmod>
-  </url><url>
     <loc>https://www.zmt.ac.cn/tags/embedded/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/categories/project/</loc>
-    <lastmod>2024-09-10T20:10:19+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zmt.ac.cn/tags/</loc>
     <lastmod>2024-09-10T20:10:19+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/posts/%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0/</loc>
