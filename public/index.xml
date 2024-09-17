@@ -6,8 +6,15 @@
     <description>Recent content on ZMT</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2024 20:10:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Sep 2024 09:12:35 +0800</lastBuildDate>
     <atom:link href="https://www.zmt.ac.cn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>日记记录</title>
+      <link>https://www.zmt.ac.cn/daily/%E6%97%A5%E8%AE%B0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 17 Sep 2024 09:12:35 +0800</pubDate>
+      <guid>https://www.zmt.ac.cn/daily/%E6%97%A5%E8%AE%B0%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;每日日记记录&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
     <item>
       <title>AUTOSAR</title>
       <link>https://www.zmt.ac.cn/posts/autosar/</link>

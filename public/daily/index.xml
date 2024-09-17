@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dailies on ZMT</title>
+    <link>https://www.zmt.ac.cn/daily/</link>
+    <description>Recent content in Dailies on ZMT</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Sep 2024 09:12:35 +0800</lastBuildDate>
+    <atom:link href="https://www.zmt.ac.cn/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>日记记录</title>
+      <link>https://www.zmt.ac.cn/daily/%E6%97%A5%E8%AE%B0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Tue, 17 Sep 2024 09:12:35 +0800</pubDate>
+      <guid>https://www.zmt.ac.cn/daily/%E6%97%A5%E8%AE%B0%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;每日日记记录&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+    </item>
+  </channel>
+</rss>
