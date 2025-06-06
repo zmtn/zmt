@@ -4,51 +4,78 @@
     <title>Posts on ZMT</title>
     <link>https://www.zmt.ac.cn/posts/</link>
     <description>Recent content in Posts on ZMT</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Sep 2024 09:10:32 +0800</lastBuildDate>
-    <atom:link href="https://www.zmt.ac.cn/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 09:10:32 +0800</lastBuildDate><atom:link href="https://www.zmt.ac.cn/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>阅读管理</title>
       <link>https://www.zmt.ac.cn/posts/%E9%98%85%E8%AF%BB%E7%AE%A1%E7%90%86/</link>
       <pubDate>Tue, 17 Sep 2024 09:10:32 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/%E9%98%85%E8%AF%BB%E7%AE%A1%E7%90%86/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;阅读书单&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;我的阅读笔记&lt;/p&gt;</description>
+      <description>阅读书单
+ 我的阅读笔记</description>
     </item>
+    
     <item>
       <title>AUTOSAR</title>
       <link>https://www.zmt.ac.cn/posts/autosar/</link>
       <pubDate>Tue, 10 Sep 2024 20:10:19 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/autosar/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;AUTOSAR学习指南&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;AUTOSAR学习指南&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
+    
     <item>
       <title>卡片笔记</title>
       <link>https://www.zmt.ac.cn/posts/%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0/</link>
       <pubDate>Sun, 08 Sep 2024 21:01:43 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/%E5%8D%A1%E7%89%87%E7%AC%94%E8%AE%B0/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;卡片笔记模板&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;卡片笔记模板&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
+    
     <item>
       <title>人格类型分类</title>
       <link>https://www.zmt.ac.cn/posts/%E4%BA%BA%E6%A0%BC%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB/</link>
       <pubDate>Sun, 08 Sep 2024 20:46:11 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/%E4%BA%BA%E6%A0%BC%E7%B1%BB%E5%9E%8B%E5%88%86%E7%B1%BB/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;本文介绍了什么是人格特质，怎么分类，并介绍了主流分析方法。后面着重介绍了敏感型人格和内向人格的优势，最后介绍了人格缺陷的一些分类和特点。与人打交道，这些了解不可或缺&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;本文介绍了什么是人格特质，怎么分类，并介绍了主流分析方法：BMTI 以及五大人格分析方法。后面着重介绍了敏感型人格和内向人格的优势，最后介绍了人格缺陷的一些分类和特点。与人打交道，这些了解不可或缺&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文介绍了什么是人格特质，怎么分类，并介绍了主流分析方法。后面着重介绍了敏感型人格和内向人格的优势，最后介绍了人格缺陷的一些分类和特点。与人打交道，这些了解不可或缺&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本文介绍了什么是人格特质，怎么分类，并介绍了主流分析方法：BMTI 以及五大人格分析方法。后面着重介绍了敏感型人格和内向人格的优势，最后介绍了人格缺陷的一些分类和特点。与人打交道，这些了解不可或缺&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
+    
     <item>
       <title>Resource</title>
       <link>https://www.zmt.ac.cn/posts/resource/</link>
       <pubDate>Sun, 08 Sep 2024 19:37:18 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/resource/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我的PARA系统&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;我的资源&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;我的PARA系统&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的资源&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
+    
     <item>
       <title>Hello</title>
       <link>https://www.zmt.ac.cn/posts/hello/</link>
       <pubDate>Sun, 08 Sep 2024 15:56:46 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/hello/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;我的数据格式&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>我的数据格式
+ #include &amp;lt;stdio.</description>
     </item>
+    
   </channel>
 </rss>

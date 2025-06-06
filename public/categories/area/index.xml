@@ -4,16 +4,26 @@
     <title>Area on ZMT</title>
     <link>https://www.zmt.ac.cn/categories/area/</link>
     <description>Recent content in Area on ZMT</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Sep 2024 09:24:24 +0800</lastBuildDate>
-    <atom:link href="https://www.zmt.ac.cn/categories/area/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Jun 2025 20:29:25 +0800</lastBuildDate><atom:link href="https://www.zmt.ac.cn/categories/area/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>每日一记</title>
+      <link>https://www.zmt.ac.cn/read/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/</link>
+      <pubDate>Fri, 06 Jun 2025 20:29:25 +0800</pubDate>
+      
+      <guid>https://www.zmt.ac.cn/read/%E6%AF%8F%E6%97%A5%E4%B8%80%E8%AE%B0/</guid>
+      <description>&lt;hr&gt;</description>
+    </item>
+    
     <item>
       <title>费曼学习法</title>
       <link>https://www.zmt.ac.cn/read/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/</link>
       <pubDate>Tue, 17 Sep 2024 09:24:24 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/read/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/</guid>
       <description>&lt;hr&gt;</description>
     </item>
+    
   </channel>
 </rss>

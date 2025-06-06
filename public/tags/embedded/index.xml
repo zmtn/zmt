@@ -4,16 +4,19 @@
     <title>Embedded on ZMT</title>
     <link>https://www.zmt.ac.cn/tags/embedded/</link>
     <description>Recent content in Embedded on ZMT</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Sep 2024 20:10:19 +0800</lastBuildDate>
-    <atom:link href="https://www.zmt.ac.cn/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Sep 2024 20:10:19 +0800</lastBuildDate><atom:link href="https://www.zmt.ac.cn/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AUTOSAR</title>
       <link>https://www.zmt.ac.cn/posts/autosar/</link>
       <pubDate>Tue, 10 Sep 2024 20:10:19 +0800</pubDate>
+      
       <guid>https://www.zmt.ac.cn/posts/autosar/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;AUTOSAR学习指南&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;AUTOSAR学习指南&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
+    
   </channel>
 </rss>
