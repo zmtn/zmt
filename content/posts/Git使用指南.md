@@ -12,37 +12,32 @@ tags = ['Embedded']
 <!--more-->
 
 
-- [Git下载](#git下载)
-- [Git基础](#git基础)
-- [Git分支](#git分支)
-- [服务器上的Git](#服务器上的git)
-- [分布式Git](#分布式git)
+- [1.Git下载](#1git下载)
+- [2.Git基础](#2git基础)
+- [3.Git分支](#3git分支)
+- [4.服务器上的Git](#4服务器上的git)
+- [5.分布式Git](#5分布式git)
 
 
-## Git下载
+## 1.Git下载
 
 参考 [^1]为官方文档
 
 
 
-## Git基础
+## 2.Git基础
 
 
 
 
-## Git分支
+## 3.Git分支
 
 
 
-## 服务器上的Git
+## 4.服务器上的Git
 
 
-## 分布式Git
-
-
-
-
-
+## 5.分布式Git
 
 
 
@@ -53,6 +48,11 @@ tags = ['Embedded']
 
 
 
-> 相关批注
 
-* [^1]: https://git-scm.com/book/zh/v2
+
+
+
+
+
+---
+[^1]: https://git-scm.com/book/zh/v2
