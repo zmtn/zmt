@@ -24,6 +24,34 @@ tags = ['Embedded']
 参考 [^1]为官方文档
 
 
+> 相关的案例
+
+```mermaid
+---
+title: Example Git diagram
+---
+gitGraph
+   commit
+   commit
+   branch develop
+   checkout develop
+   commit
+   commit
+   checkout main
+   merge develop
+   commit
+   commit
+```
+
+在 Mermaid 中，我们支持基本的 git 操作，例如：
+
+* commit ：代表当前分支上的新提交。
+
+* 分支 ：创建并切换到新分支，将其设置为当前分支。
+
+* checkout ：签出现有分支并将其设置为当前分支。
+
+* merge ：将现有分支合并到当前分支。
 
 ## 2.Git基础
 
