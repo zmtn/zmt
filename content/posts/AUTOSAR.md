@@ -23,3 +23,39 @@ draft = false
 | `MOD`  | Model                              | 建模                       |
 | `MMOD` | Meta Model                         | 元模型                     |
 
+---
+
+```mermaid
+---
+config:
+  kanban:
+    ticketBaseUrl: 'https://mermaidchart.atlassian.net/browse/#TICKET#'
+---
+kanban
+  [Application Layer]
+    [Create Documentation]
+    [Create Blog about the new diagram]
+  [Runtime Environment]
+  [Services]
+    [Memory Services]
+    [Crypto Services]
+    [Off Board Communication  Services]
+    [Communication  Services]
+  [Abstraction]
+    [Onboard Device Abstraction]
+    [Memory Hardware Abstraction]
+    [Crypto Hardware Abstraction]
+    [Wireless Communication Hardware Abstraction]
+    [Communication Hardware Abstraction]
+    [I/O Hardware Abstraction]
+  [Drivers]
+    [Microcontroller Drivers]
+    [Memory Drivers]
+    [Crypto Drivers]
+    [Wireless Communication Drivers]
+    [Communication Drivers]
+    [I/O Drivers]
+    [Complex Drivers]
+  [Microcontroller]
+
+```
