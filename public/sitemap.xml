@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.zmt.ac.cn/posts/</loc>
+    <lastmod>2025-06-09T09:21:29+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/</loc>
+    <lastmod>2025-06-09T09:21:29+08:00</lastmod>
+  </url><url>
+    <loc>https://www.zmt.ac.cn/posts/%E8%B5%84%E6%BA%90%E6%90%9C%E8%97%8F/</loc>
+    <lastmod>2025-06-09T09:21:29+08:00</lastmod>
+  </url><url>
     <loc>https://www.zmt.ac.cn/categories/</loc>
     <lastmod>2025-06-07T08:11:45+08:00</lastmod>
   </url><url>
@@ -11,16 +20,10 @@
     <loc>https://www.zmt.ac.cn/posts/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2025-06-07T08:11:45+08:00</lastmod>
   </url><url>
-    <loc>https://www.zmt.ac.cn/posts/</loc>
-    <lastmod>2025-06-07T08:11:45+08:00</lastmod>
-  </url><url>
     <loc>https://www.zmt.ac.cn/categories/project/</loc>
     <lastmod>2025-06-07T08:11:45+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/tags/</loc>
-    <lastmod>2025-06-07T08:11:45+08:00</lastmod>
-  </url><url>
-    <loc>https://www.zmt.ac.cn/</loc>
     <lastmod>2025-06-07T08:11:45+08:00</lastmod>
   </url><url>
     <loc>https://www.zmt.ac.cn/daily/</loc>
