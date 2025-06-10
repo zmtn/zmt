@@ -12,7 +12,11 @@ draft = false
 
 > MakeFile学习参考手册 [^1]
 
+## 概述
 
+## makefile介绍
+
+## 书写规则
 
 
 
@@ -28,4 +32,4 @@ draft = false
 
 > 参考链接
 
-1. [^1] : [how-to-write-makefile](https://seisman.github.io/how-to-write-makefile/overview.html)
+1. [^1]: [how-to-write-makefile](https://seisman.github.io/how-to-write-makefile/overview.html)
