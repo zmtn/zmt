@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 287 words</span>
+  <span> • 297 words</span>
   <span> • 2 minute read</span>
   
   
@@ -108,6 +108,11 @@
 <li><a href="#makefile%E8%A7%84%E5%88%99">makefile规则</a></li>
 <li><a href="#%E4%B8%80%E4%B8%AA%E7%A4%BA%E4%BE%8B">一个示例</a></li>
 <li><a href="#make%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">make是如何工作的</a></li>
+<li><a href="#makefile%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F">makefile中使用变量</a></li>
+<li><a href="#%E8%AE%A9make%E8%87%AA%E5%8A%A8%E6%8E%A8%E5%AF%BC">让make自动推导</a></li>
+<li><a href="#makefile%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E9%A3%8E%E6%A0%BC">makefile的另一种风格</a></li>
+<li><a href="#%E6%B8%85%E7%A9%BA%E7%9B%AE%E5%BD%95%E7%9A%84%E8%A7%84%E5%88%99">清空目录的规则</a></li>
+<li><a href="#makefile%E9%87%8C%E6%9C%89%E4%BB%80%E4%B9%88">Makefile里有什么</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99">书写规则</a></li>
@@ -211,6 +216,11 @@
 <p>通过上述分析，我们知道，像clean这种，没有被第一个目标文件直接或间接关联，那么它后面所定义的命令将不会被自动执行，不过，我们可以显示要make执行。即命令——<code>make clean</code> ，以此来清除所有的目标文件，以便重编译。</p>
 <p>于是在我们编程中，如果这个工程已被编译过了，当我们修改了其中一个源文件，比如 <code>file.c</code> ，那么根据我们的依赖性，我们的目标 <code>file.o</code> 会被重编译（也就是在这个依性关系后面所定义的命令），于是 <code>file.o</code> 的文件也是最新的啦，于是 <code>file.o</code> 的文件修改时间要比<code>edit</code>要新，所以 <code>edit</code> 也会被重新链接了（详见 edit 目标文件后定义的命令）。</p>
 <p>而如果我们改变了<code>command.h</code> ，那么， <code>kdb.o</code> 、 <code>command.o</code> 和 <code>files.o</code> 都会被重编译，并且，<code>edit</code>会被重链接。</p>
+<h3 id="makefile中使用变量">makefile中使用变量</h3>
+<h3 id="让make自动推导">让make自动推导</h3>
+<h3 id="makefile的另一种风格">makefile的另一种风格</h3>
+<h3 id="清空目录的规则">清空目录的规则</h3>
+<h3 id="makefile里有什么">Makefile里有什么</h3>
 <h2 id="书写规则">书写规则</h2>
 <h2 id="书写命令">书写命令</h2>
 <h2 id="使用变量">使用变量</h2>

@@ -14,6 +14,11 @@ draft = false
   - [makefile规则](#makefile规则)
   - [一个示例](#一个示例)
   - [make是如何工作的](#make是如何工作的)
+  - [makefile中使用变量](#makefile中使用变量)
+  - [让make自动推导](#让make自动推导)
+  - [makefile的另一种风格](#makefile的另一种风格)
+  - [清空目录的规则](#清空目录的规则)
+  - [Makefile里有什么](#makefile里有什么)
 - [书写规则](#书写规则)
 - [书写命令](#书写命令)
 - [使用变量](#使用变量)
@@ -150,6 +155,17 @@ clean :
 
 而如果我们改变了`command.h` ，那么， `kdb.o` 、 `command.o` 和 `files.o` 都会被重编译，并且，`edit`会被重链接。
 
+### makefile中使用变量
+
+### 让make自动推导
+
+
+### makefile的另一种风格
+
+
+### 清空目录的规则
+
+### Makefile里有什么
 
 ## 书写规则
 
