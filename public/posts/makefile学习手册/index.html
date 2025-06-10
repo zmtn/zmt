@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 217 words</span>
+  <span> • 235 words</span>
   <span> • 2 minute read</span>
   
   
@@ -107,9 +107,18 @@
 <ul>
 <li><a href="#makefile%E8%A7%84%E5%88%99">makefile规则</a></li>
 <li><a href="#%E4%B8%80%E4%B8%AA%E7%A4%BA%E4%BE%8B">一个示例</a></li>
+<li><a href="#make%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">make是如何工作的</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99">书写规则</a></li>
+<li><a href="#%E4%B9%A6%E5%86%99%E5%91%BD%E4%BB%A4">书写命令</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F">使用变量</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD">使用条件判断</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0">使用函数</a></li>
+<li><a href="#make%E7%9A%84%E8%BF%90%E8%A1%8C">make的运行</a></li>
+<li><a href="#%E9%9A%90%E5%90%AB%E8%A7%84%E5%88%99">隐含规则</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8make%E6%9B%B4%E6%96%B0%E5%87%BD%E6%95%B0%E5%BA%93%E6%96%87%E4%BB%B6">使用make更新函数库文件</a></li>
+<li><a href="#%E5%90%8E%E7%BB%AD">后续</a></li>
 </ul>
 <blockquote>
 <p>MakeFile学习参考手册 <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
@@ -179,7 +188,16 @@
 <p>在这个makefile中，目标文件（target）包含：可执行文件edit和中间目标文件（ *.o ），依赖文件（prerequisites）就是冒号后面的那些 .c 文件和 .h 文件。每一个 .o 文件都有一组依赖文件，而这些 .o 文件又是可执行文件 edit 的依赖文件。依赖关系的实质就是说明了目标文件是由哪些文件生成的，换言之，目标文件是哪些文件更新的。</p>
 <p>在定义好依赖关系后，后续的recipe行定义了如何生成目标文件的操作系统命令，一定要以一个 Tab 键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和prerequisites文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。</p>
 <p>这里要说明一点的是， clean 不是一个文件，它只不过是一个动作名字，有点像C语言中的label一样，其冒号后什么也没有，那么，make就不会自动去找它的依赖性，也就不会自动执行其后所定义的命令。要执行其后的命令，就要在make命令后明显得指出这个label的名字。这样的方法非常有用，我们可以在一个makefile中定义不用的编译或是和编译无关的命令，比如程序的打包，程序的备份，等等。</p>
+<h3 id="make是如何工作的">make是如何工作的</h3>
 <h2 id="书写规则">书写规则</h2>
+<h2 id="书写命令">书写命令</h2>
+<h2 id="使用变量">使用变量</h2>
+<h2 id="使用条件判断">使用条件判断</h2>
+<h2 id="使用函数">使用函数</h2>
+<h2 id="make的运行">make的运行</h2>
+<h2 id="隐含规则">隐含规则</h2>
+<h2 id="使用make更新函数库文件">使用make更新函数库文件</h2>
+<h2 id="后续">后续</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
