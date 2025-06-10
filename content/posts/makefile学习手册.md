@@ -52,4 +52,4 @@ makefile带来的好处就是——“自动化编译”，一旦写好，只需
 
 
 
-1. [^1]: [how-to-write-makefile](https://seisman.github.io/how-to-write-makefile/overview.html)
+[^1]: [how-to-write-makefile](https://seisman.github.io/how-to-write-makefile/overview.html)
