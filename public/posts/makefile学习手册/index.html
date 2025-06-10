@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 338 words</span>
+  <span> • 348 words</span>
   <span> • 2 minute read</span>
   
   
@@ -115,7 +115,15 @@
 <li><a href="#makefile%E9%87%8C%E6%9C%89%E4%BB%80%E4%B9%88">Makefile里有什么</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99">书写规则</a></li>
+<li><a href="#%E4%B9%A6%E5%86%99%E8%A7%84%E5%88%99">书写规则</a>
+<ul>
+<li><a href="#%E8%A7%84%E5%88%99%E4%B8%BE%E4%BE%8B">规则举例</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E7%9A%84%E8%AF%AD%E6%B3%95">规则的语法</a></li>
+<li><a href="#%E5%9C%A8%E8%A7%84%E5%88%99%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%80%9A%E9%85%8D%E7%AC%A6">在规则中使用通配符</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%90%9C%E5%AF%BB">文件搜寻</a></li>
+<li><a href="#%E4%BC%AA%E7%9B%AE%E6%A0%87">伪目标</a></li>
+</ul>
+</li>
 <li><a href="#%E4%B9%A6%E5%86%99%E5%91%BD%E4%BB%A4">书写命令</a>
 <ul>
 <li><a href="#%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4">显示命令</a></li>
@@ -230,6 +238,11 @@
 <h3 id="清空目录的规则">清空目录的规则</h3>
 <h3 id="makefile里有什么">Makefile里有什么</h3>
 <h2 id="书写规则">书写规则</h2>
+<h3 id="规则举例">规则举例</h3>
+<h3 id="规则的语法">规则的语法</h3>
+<h3 id="在规则中使用通配符">在规则中使用通配符</h3>
+<h3 id="文件搜寻">文件搜寻</h3>
+<h3 id="伪目标">伪目标</h3>
 <h2 id="书写命令">书写命令</h2>
 <p>每条规则中的命令和操作系统Shell的命令行是一致的。<code>make</code>会一按顺序一条一条的执行命令，每条命令的开头必须以 <code>Tab</code> 键开头，除非，命令是紧跟在依赖规则后面的分号后的。在命令行之间中的空格或是空行会被忽略，但是如果该空格或空行是以Tab键开头的，那么<code>make</code>会认为其是一个空命令。</p>
 <p>我们在UNIX下可能会使用不同的Shell，但是make的命令默认是被<code>/bin/sh</code> ——UNIX的标准Shell 解释执行的。除非你特别指定一个其它的Shell。Makefile中， # 是注释符，很像C/C++中的 <code>//</code> ，其后的本行字符都被注释。</p>
