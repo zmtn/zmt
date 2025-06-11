@@ -91,8 +91,8 @@
     
     
   </strong>
-  <span> • 393 words</span>
-  <span> • 2 minute read</span>
+  <span> • 538 words</span>
+  <span> • 3 minute read</span>
   
   
 </div>
@@ -233,6 +233,41 @@
 <p>于是在我们编程中，如果这个工程已被编译过了，当我们修改了其中一个源文件，比如 <code>file.c</code> ，那么根据我们的依赖性，我们的目标 <code>file.o</code> 会被重编译（也就是在这个依性关系后面所定义的命令），于是 <code>file.o</code> 的文件也是最新的啦，于是 <code>file.o</code> 的文件修改时间要比<code>edit</code>要新，所以 <code>edit</code> 也会被重新链接了（详见 edit 目标文件后定义的命令）。</p>
 <p>而如果我们改变了<code>command.h</code> ，那么， <code>kdb.o</code> 、 <code>command.o</code> 和 <code>files.o</code> 都会被重编译，并且，<code>edit</code>会被重链接。</p>
 <h3 id="makefile中使用变量">makefile中使用变量</h3>
+<p>在上面的例子中，先让我们看看edit的规则：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">edit </span><span style="color:#f92672">:</span> main.o kbd.o command.o display.o \
+        insert.o search.o files.o utils.o
+    cc -o edit main.o kbd.o command.o display.o <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>        insert.o search.o files.o utils.o
+</code></pre></div><p>我们可以看到 <code>.o </code>文件的字符串被重复了两次，如果我们的工程需要加入一个新的<code>.o</code>文件，那么我们需要在两个地方加（应该是三个地方，还有一个地方在clean中）。当然，我们的<code>makefile</code>并不复杂，所以在两个地方加也不累，但如果makefile变得复杂，那么我们就有可能会忘掉一个需要加入的地方，而导致编译失败。所以，为了<code>makefile</code>的易维护，在<code>makefile</code>中我们可以使用变量。makefile的变量也就是一个字符串，理解成C语言中的宏可能会更好。</p>
+<p>比如，我们声明一个变量，叫 <code>objects</code> ， <code>OBJECTS</code> ， <code>objs </code>， <code>OBJS </code>， <code>obj</code> 或是 <code>OBJ</code> ，反正不管什么啦，只要能够表示obj文件就行了。我们在makefile一开始就这样定义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">objects <span style="color:#f92672">=</span> main.o kbd.o command.o display.o <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>     insert.o search.o files.o utils.o
+</code></pre></div><p>于是，我们就可以很方便地在我们的<code>makefile</code>中以 <code>$(objects)</code> 的方式来使用这个变量了，于是我们的改良版<code>makefile</code>就变成下面这个样子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">objects <span style="color:#f92672">=</span> main.o kbd.o command.o display.o <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    insert.o search.o files.o utils.o
+
+<span style="color:#a6e22e">edit </span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+    cc -o edit <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+<span style="color:#a6e22e">main.o </span><span style="color:#f92672">:</span> main.c defs.h
+    cc -c main.c
+<span style="color:#a6e22e">kbd.o </span><span style="color:#f92672">:</span> kbd.c defs.h command.h
+    cc -c kbd.c
+<span style="color:#a6e22e">command.o </span><span style="color:#f92672">:</span> command.c defs.h command.h
+    cc -c command.c
+<span style="color:#a6e22e">display.o </span><span style="color:#f92672">:</span> display.c defs.h buffer.h
+    cc -c display.c
+<span style="color:#a6e22e">insert.o </span><span style="color:#f92672">:</span> insert.c defs.h buffer.h
+    cc -c insert.c
+<span style="color:#a6e22e">search.o </span><span style="color:#f92672">:</span> search.c defs.h buffer.h
+    cc -c search.c
+<span style="color:#a6e22e">files.o </span><span style="color:#f92672">:</span> files.c defs.h buffer.h command.h
+    cc -c files.c
+<span style="color:#a6e22e">utils.o </span><span style="color:#f92672">:</span> utils.c defs.h
+    cc -c utils.c
+<span style="color:#a6e22e">clean </span><span style="color:#f92672">:</span>
+    rm edit <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+</code></pre></div><p>于是如果有新的 .o 文件加入，我们只需简单地修改一下 <code>objects</code>变量就可以了。</p>
+<p>关于变量更多的话题，我会在后续给你一一道来。</p>
 <h3 id="让make自动推导">让make自动推导</h3>
 <h3 id="makefile的另一种风格">makefile的另一种风格</h3>
 <h3 id="清空目录的规则">清空目录的规则</h3>

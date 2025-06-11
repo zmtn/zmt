@@ -167,6 +167,53 @@ clean :
 
 ### makefile中使用变量
 
+在上面的例子中，先让我们看看edit的规则：
+
+```makefile
+edit : main.o kbd.o command.o display.o \
+        insert.o search.o files.o utils.o
+    cc -o edit main.o kbd.o command.o display.o \
+        insert.o search.o files.o utils.o
+```
+我们可以看到 `.o `文件的字符串被重复了两次，如果我们的工程需要加入一个新的` .o `文件，那么我们需要在两个地方加（应该是三个地方，还有一个地方在clean中）。当然，我们的`makefile`并不复杂，所以在两个地方加也不累，但如果makefile变得复杂，那么我们就有可能会忘掉一个需要加入的地方，而导致编译失败。所以，为了`makefile`的易维护，在`makefile`中我们可以使用变量。makefile的变量也就是一个字符串，理解成C语言中的宏可能会更好。
+
+比如，我们声明一个变量，叫 `objects` ， `OBJECTS` ， `objs `， `OBJS `， `obj` 或是 `OBJ` ，反正不管什么啦，只要能够表示obj文件就行了。我们在makefile一开始就这样定义：
+
+```makefile
+objects = main.o kbd.o command.o display.o \
+     insert.o search.o files.o utils.o
+```
+于是，我们就可以很方便地在我们的`makefile`中以 `$(objects)` 的方式来使用这个变量了，于是我们的改良版`makefile`就变成下面这个样子：
+
+```makefile
+objects = main.o kbd.o command.o display.o \
+    insert.o search.o files.o utils.o
+
+edit : $(objects)
+    cc -o edit $(objects)
+main.o : main.c defs.h
+    cc -c main.c
+kbd.o : kbd.c defs.h command.h
+    cc -c kbd.c
+command.o : command.c defs.h command.h
+    cc -c command.c
+display.o : display.c defs.h buffer.h
+    cc -c display.c
+insert.o : insert.c defs.h buffer.h
+    cc -c insert.c
+search.o : search.c defs.h buffer.h
+    cc -c search.c
+files.o : files.c defs.h buffer.h command.h
+    cc -c files.c
+utils.o : utils.c defs.h
+    cc -c utils.c
+clean :
+    rm edit $(objects)
+```
+于是如果有新的 .o 文件加入，我们只需简单地修改一下 `objects`变量就可以了。
+
+关于变量更多的话题，我会在后续给你一一道来。
+
 ### 让make自动推导
 
 
