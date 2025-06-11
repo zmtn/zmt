@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 372 words</span>
+  <span> • 393 words</span>
   <span> • 2 minute read</span>
   
   
@@ -267,6 +267,13 @@
 </code></pre></div><p>当我们执行 <code>make exec</code> 时，第一个例子中的cd没有作用，<code>pwd</code>会打印出当前的Makefile目录，而第二个例子中，cd就起作用了，pwd会打印出“/home/hchen”。</p>
 <p><code>make</code>一般是使用环境变量SHELL中所定义的系统Shell来执行命令，默认情况下使用UNIX的标准Shell——/bin/sh来执行命令。但在MS-DOS下有点特殊，因为MS-DOS下没有SHELL环境变量，当然你也可以指定。如果你指定了UNIX风格的目录形式，首先，make会在SHELL所指定的路径中找寻命令解释器，如果找不到，其会在当前盘符中的当前目录中寻找，如果再找不到，其会在PATH环境变量中所定义的所有路径中寻找。MS-DOS中，如果你定义的命令解释器没有找到，其会给你的命令解释器加上诸如 <code>.exe</code> 、 <code>.com</code> 、 <code>.bat</code> 、 <code>.sh</code> 等后缀。</p>
 <h3 id="命令出错">命令出错</h3>
+<p>每当命令运行完后，make会检测每个命令的返回码，如果命令返回成功，那么make会执行下一条命令，当规则中所有的命令成功返回后，这个规则就算是成功完成了。如果一个规则中的某个命令出错了（命令退出码非零），那么make就会终止执行当前规则，这将有可能终止所有规则的执行。</p>
+<p>有些时候，命令的出错并不表示就是错误的。例如<code>mkdir</code>命令，我们一定需要建立一个目录，如果目录不存在，那么mkdir就成功执行，万事大吉，如果目录存在，那么就出错了。我们之所以使用mkdir的意思就是一定要有这样的一个目录，于是我们就不希望mkdir出错而终止规则的运行。</p>
+<p>为了做到这一点，忽略命令的出错，我们可以在Makefile的命令行前加一个减号 - （在Tab键之后），标记为不管命令出不出错都认为是成功的。如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">clean</span><span style="color:#f92672">:</span>
+    -rm -f *.o
+</code></pre></div><p>还有一个全局的办法是，给make加上 -i 或是 <code>--ignore-errors</code> 参数，那么，Makefile中所有命令都会忽略错误。而如果一个规则是以 <code>.IGNORE</code> 作为目标的，那么这个规则中的所有命令将会忽略错误。这些是不同级别的防止命令出错的方法，你可以根据你的不同喜欢设置。</p>
+<p>还有一个要提一下的make的参数的是 <code>-k</code> 或是 <code>--keep-going</code> ，这个参数的意思是，如果某规则中的命令出错了，那么就终止该规则的执行，但继续执行其它规则。</p>
 <h3 id="嵌套执行make">嵌套执行make</h3>
 <h3 id="定义命令包">定义命令包</h3>
 <h2 id="使用变量">使用变量</h2>
