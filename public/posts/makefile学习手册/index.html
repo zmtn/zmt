@@ -91,8 +91,8 @@
     
     
   </strong>
-  <span> • 617 words</span>
-  <span> • 3 minute read</span>
+  <span> • 740 words</span>
+  <span> • 4 minute read</span>
   
   
 </div>
@@ -332,6 +332,46 @@
 </code></pre></div><p>还有一个全局的办法是，给make加上 -i 或是 <code>--ignore-errors</code> 参数，那么，Makefile中所有命令都会忽略错误。而如果一个规则是以 <code>.IGNORE</code> 作为目标的，那么这个规则中的所有命令将会忽略错误。这些是不同级别的防止命令出错的方法，你可以根据你的不同喜欢设置。</p>
 <p>还有一个要提一下的make的参数的是 <code>-k</code> 或是 <code>--keep-going</code> ，这个参数的意思是，如果某规则中的命令出错了，那么就终止该规则的执行，但继续执行其它规则。</p>
 <h3 id="嵌套执行make">嵌套执行make</h3>
+<p>在一些大的工程中，我们会把我们不同模块或是不同功能的源文件放在不同的目录中，我们可以在每个目录中都书写一个该目录的Makefile，这有利于让我们的Makefile变得更加地简洁，而不至于把所有的东西全部写在一个<code>Makefile</code>中，这样会很难维护我们的<code>Makefile</code>，这个技术对于我们模块编译和分段编译有着非常大的好处。</p>
+<p>例如，我们有一个子目录叫<code>subdir</code>，这个目录下有个<code>Makefile</code>文件，来指明了这个目录下文件的编译规则。那么我们总控的<code>Makefile</code>可以这样书写：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">subsystem</span><span style="color:#f92672">:</span>
+    cd subdir <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span>
+</code></pre></div><p>其等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">subsystem</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span> -C subdir
+</code></pre></div><p>定义<code>$(MAKE)</code>宏变量的意思是，也许我们的make需要一些参数，所以定义成一个变量比较利于维护。这两个例子的意思都是先进入<code>“subdir”</code>目录，然后执行make命令。</p>
+<p>我们把这个<code>Makefile</code>叫做“总控Makefile”，总控Makefile的变量可以传递到下级的Makefile中（如果你显示的声明），但是不会覆盖下层的Makefile中所定义的变量，除非指定了 -e 参数。</p>
+<p>如果你要传递变量到下级Makefile中，那么你可以使用这样的声明:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">export </span><span style="color:#960050;background-color:#1e0010">&lt;variable</span> <span style="color:#960050;background-color:#1e0010">...&gt;;</span>
+</code></pre></div><p>如果你不想让某些变量传递到下级Makefile中，那么你可以这样声明:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#960050;background-color:#1e0010">un</span><span style="color:#66d9ef">export </span><span style="color:#960050;background-color:#1e0010">&lt;variable</span> <span style="color:#960050;background-color:#1e0010">...&gt;;</span>
+</code></pre></div><p>如：</p>
+<p>示例一：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">export </span>variable <span style="color:#f92672">=</span> value
+</code></pre></div><p>其等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">variable <span style="color:#f92672">=</span> value
+<span style="color:#66d9ef">export</span> variable
+</code></pre></div><p>其等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">export </span>variable <span style="color:#f92672">:=</span> value
+</code></pre></div><p>其等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">variable <span style="color:#f92672">:=</span> value
+<span style="color:#66d9ef">export</span> variable
+</code></pre></div><p>示例二：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#66d9ef">export </span>variable <span style="color:#f92672">+=</span> value
+</code></pre></div><p>其等价于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">variable <span style="color:#f92672">+=</span> value
+<span style="color:#66d9ef">export</span> variable
+</code></pre></div><p>如果你要传递所有的变量，那么，只要一个<code>export</code>就行了。后面什么也不用跟，表示传递所有的变量。</p>
+<p>需要注意的是，有两个变量，一个是 <code>SHELL</code> ，一个是<code>MAKEFLAGS</code>，这两个变量不管你是否<code>export</code>，其总是要传递到下层 <code>Makefile</code>中，特别是 <code>MAKEFLAGS</code> 变量，其中包含了make的参数信息，如果我们执行“总控<code>Makefile</code>”时有<code>make</code>参数或是在上层 <code>Makefile</code>中定义了这个变量，那么 MAKEFLAGS 变量将会是这些参数，并会传递到下层<code>Makefile</code>中，这是一个系统级的环境变量。</p>
+<p>但是make命令中的有几个参数并不往下传递，它们是 -C , -f , -h, -o 和 -W （有关Makefile参数的细节将在后面说明），如果你不想往下层传递参数，那么，你可以这样来：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">subsystem</span><span style="color:#f92672">:</span>
+    cd subdir <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">$(</span>MAKE<span style="color:#66d9ef">)</span> MAKEFLAGS<span style="color:#f92672">=</span>
+</code></pre></div><p>如果你定义了环境变量 MAKEFLAGS ，那么你得确信其中的选项是大家都会用到的，如果其中有 -t , -n 和 -q 参数，那么将会有让你意想不到的结果，或许会让你异常地恐慌。</p>
+<p>还有一个在“嵌套执行”中比较有用的参数， -w 或是 &ndash;print-directory 会在make的过程中输出一些信息，让你看到目前的工作目录。比如，如果我们的下级make目录是“/home/hchen/gnu/make”，如果我们使用 <code>make -w</code> 来执行，那么当进入该目录时，我们会看到:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">make</span><span style="color:#f92672">:</span> Entering directory `/home/hchen/gnu/make&#39;.
+</code></pre></div><p>而在完成下层make后离开目录时，我们会看到:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile"><span style="color:#a6e22e">make</span><span style="color:#f92672">:</span> Leaving directory `/home/hchen/gnu/make&#39;
+</code></pre></div><p>当你使用 -C 参数来指定make下层Makefile时， -w 会被自动打开的。如果参数中有 -s （ &ndash;slient ）或是 &ndash;no-print-directory ，那么， -w 总是失效的。</p>
 <h3 id="定义命令包">定义命令包</h3>
 <h2 id="使用变量">使用变量</h2>
 <h2 id="使用条件判断">使用条件判断</h2>
