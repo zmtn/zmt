@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 538 words</span>
+  <span> • 617 words</span>
   <span> • 3 minute read</span>
   
   
@@ -205,9 +205,9 @@
 <span style="color:#a6e22e">clean </span><span style="color:#f92672">:</span>
     rm edit main.o kbd.o command.o display.o <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>        insert.o search.o files.o utils.o
-</code></pre></div><p>反斜杠（ \ ）是换行符的意思。这样比较便于makefile的阅读。我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令 make 就可以生成执行文件edit。如果要删除可执行文件和所有的中间目标文件，那么，只要简单地执行一下 make clean 就可以了。</p>
+</code></pre></div><p>反斜杠（ \ ）是换行符的意思。这样比较便于makefile的阅读。我们可以把这个内容保存在名字为“makefile”或“Makefile”的文件中，然后在该目录下直接输入命令 make 就可以生成执行文件edit。如果要删除可执行文件和所有的中间目标文件，那么，只要简单地执行一下 <code>make clean</code> 就可以了。</p>
 <p>在这个makefile中，目标文件（target）包含：可执行文件edit和中间目标文件（ *.o ），依赖文件（prerequisites）就是冒号后面的那些 .c 文件和 .h 文件。每一个 .o 文件都有一组依赖文件，而这些 .o 文件又是可执行文件 edit 的依赖文件。依赖关系的实质就是说明了目标文件是由哪些文件生成的，换言之，目标文件是哪些文件更新的。</p>
-<p>在定义好依赖关系后，后续的recipe行定义了如何生成目标文件的操作系统命令，一定要以一个 Tab 键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和prerequisites文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。</p>
+<p>在定义好依赖关系后，后续的<code>recipe</code>行定义了如何生成目标文件的操作系统命令，一定要以一个 <code>Tab </code>键作为开头。记住，make并不管命令是怎么工作的，他只管执行所定义的命令。make会比较targets文件和<code>prerequisites</code>文件的修改日期，如果prerequisites文件的日期要比targets文件的日期要新，或者target不存在的话，那么，make就会执行后续定义的命令。</p>
 <p>这里要说明一点的是， clean 不是一个文件，它只不过是一个动作名字，有点像C语言中的label一样，其冒号后什么也没有，那么，make就不会自动去找它的依赖性，也就不会自动执行其后所定义的命令。要执行其后的命令，就要在make命令后明显得指出这个label的名字。这样的方法非常有用，我们可以在一个makefile中定义不用的编译或是和编译无关的命令，比如程序的打包，程序的备份，等等。</p>
 <h3 id="make是如何工作的">make是如何工作的</h3>
 <p>在默认的方式下，也就是我们只输入<code>make</code> 命令。那么，</p>
@@ -219,13 +219,13 @@
 <p>如果找到，它会找文件中的第一个目标文件（target），在上面的例子中，他会找到“edit”这个文件，并把这个文件作为最终的目标文件。</p>
 </li>
 <li>
-<p>如果edit文件不存在，或是edit所依赖的后面的 .o 文件的文件修改时间要比 edit 这个文件新，那么，他就会执行后面所定义的命令来生成 edit 这个文件。</p>
+<p>如果<code>edit</code>文件不存在，或是edit所依赖的后面的 <code>.o </code>文件的文件修改时间要比 <code>edit</code> 这个文件新，那么，他就会执行后面所定义的命令来生成 edit 这个文件。</p>
 </li>
 <li>
-<p>如果 edit 所依赖的 .o 文件也不存在，那么make会在当前文件中找目标为 .o 文件的依赖性，如果找到则再根据那一个规则生成 .o 文件。（这有点像一个堆栈的过程）</p>
+<p>如果 <code>edit</code> 所依赖的 .o 文件也不存在，那么make会在当前文件中找目标为 .o 文件的依赖性，如果找到则再根据那一个规则生成 <code>.o</code> 文件。（这有点像一个堆栈的过程）</p>
 </li>
 <li>
-<p>当然，你的C文件和头文件是存在的啦，于是make会生成 .o 文件，然后再用 .o 文件生成make的终极任务，也就是可执行文件 edit 了。</p>
+<p>当然，你的C文件和头文件是存在的啦，于是<code>make</code>会生成 .o 文件，然后再用 .o 文件生成make的终极任务，也就是可执行文件<code>edit</code>了。</p>
 </li>
 </ol>
 <p>这就是整个<code>make</code>的依赖性，<code>make</code>会一层又一层地去找文件的依赖关系，直到最终编译出第一个目标文件。在找寻的过程中，如果出现错误，比如最后被依赖的文件找不到，那么make就会直接退出，并报错，而对于所定义的命令的错误，或是编译不成功，make根本不理。<code>make</code>只管文件的依赖性，即，如果在我找了依赖关系之后，冒号后面的文件还是不在，那么对不起，我就不工作啦。</p>
@@ -269,6 +269,28 @@
 </code></pre></div><p>于是如果有新的 .o 文件加入，我们只需简单地修改一下 <code>objects</code>变量就可以了。</p>
 <p>关于变量更多的话题，我会在后续给你一一道来。</p>
 <h3 id="让make自动推导">让make自动推导</h3>
+<p>GNU的make很强大，它可以自动推导文件以及文件依赖关系后面的命令，于是我们就没必要去在每一个 <code>.o</code> 文件后都写上类似的命令，因为，我们的<code>make</code>会自动识别，并自己推导命令。</p>
+<p>只要make看到一个 .o 文件，它就会自动的把 .c 文件加在依赖关系中，如果make找到一个 <code>whatever.o</code> ，那么 <code>whatever.c</code> 就会是 <code>whatever.o </code>的依赖文件。并且 <code>cc -c whatever.c</code> 也会被推导出来，于是，我们的makefile再也不用写得这么复杂。我们的新<code>makefile</code>又出炉了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-makefile" data-lang="makefile">objects <span style="color:#f92672">=</span> main.o kbd.o command.o display.o <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    insert.o search.o files.o utils.o
+
+<span style="color:#a6e22e">edit </span><span style="color:#f92672">:</span> <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+    cc -o edit <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+
+<span style="color:#a6e22e">main.o </span><span style="color:#f92672">:</span> defs.h
+<span style="color:#a6e22e">kbd.o </span><span style="color:#f92672">:</span> defs.h command.h
+<span style="color:#a6e22e">command.o </span><span style="color:#f92672">:</span> defs.h command.h
+<span style="color:#a6e22e">display.o </span><span style="color:#f92672">:</span> defs.h buffer.h
+<span style="color:#a6e22e">insert.o </span><span style="color:#f92672">:</span> defs.h buffer.h
+<span style="color:#a6e22e">search.o </span><span style="color:#f92672">:</span> defs.h buffer.h
+<span style="color:#a6e22e">files.o </span><span style="color:#f92672">:</span> defs.h buffer.h command.h
+<span style="color:#a6e22e">utils.o </span><span style="color:#f92672">:</span> defs.h
+
+<span style="color:#a6e22e">.PHONY </span><span style="color:#f92672">:</span> clean
+<span style="color:#a6e22e">clean </span><span style="color:#f92672">:</span>
+    rm edit <span style="color:#66d9ef">$(</span>objects<span style="color:#66d9ef">)</span>
+</code></pre></div><p>这种方法就是make的“隐式规则”。上面文件内容中， <code>.PHONY</code> 表示 <code>clean</code> 是个伪目标文件。</p>
+<p>关于更为详细的“隐式规则”和“伪目标文件”，我会在后续给你一一道来。</p>
 <h3 id="makefile的另一种风格">makefile的另一种风格</h3>
 <h3 id="清空目录的规则">清空目录的规则</h3>
 <h3 id="makefile里有什么">Makefile里有什么</h3>
