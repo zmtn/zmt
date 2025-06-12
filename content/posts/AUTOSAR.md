@@ -33,7 +33,7 @@ config:
 ---
 kanban
   [Application Layer]
-    [Create Documentation]
+    [PowerTrain]
     [Create Blog about the new diagram]
   [Runtime Environment]
   [Services]
