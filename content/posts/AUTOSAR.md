@@ -34,7 +34,7 @@ config:
 kanban
   [Application Layer]
     [PowerTrain]
-    [Create Blog about the new diagram]
+    [Body And Comfort]
   [Runtime Environment]
   [Services]
     [Memory Services]
