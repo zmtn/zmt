@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片笔记模板系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f2f5 0%, #dfe7f1 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            color: #333;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #3498db, #2ecc71, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            width: 100%;
+            max-width: 1400px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 380px;
+            transition: all 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .permanent .card-header {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        }
+        
+        .literature .card-header {
+            background: linear-gradient(135deg, #27ae60 0%, #16a085 100%);
+        }
+        
+        .idea .card-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+        
+        .card-icon {
+            font-size: 28px;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-title {
+            flex: 1;
+        }
+        
+        .card-title h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .card-title p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-group label i {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea.input-field {
+            min-height: 100px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        
+        .tag {
+            background: #e0f7fa;
+            color: #0097a7;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tag:hover {
+            background: #b2ebf2;
+            transform: scale(1.05);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+            margin: 15px 0;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-save {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-save:hover {
+            background: #2980b9;
+        }
+        
+        .btn-clear {
+            background: #f5f5f5;
+            color: #7f8c8d;
+        }
+        
+        .btn-clear:hover {
+            background: #e0e0e0;
+        }
+        
+        .card-footer {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .examples {
+            max-width: 1200px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .examples h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .example-cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .example-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid;
+        }
+        
+        .permanent-example {
+            border-color: #3498db;
+        }
+        
+        .literature-example {
+            border-color: #27ae60;
+        }
+        
+        .idea-example {
+            border-color: #9b59b6;
+        }
+        
+        .example-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .example-content {
+            line-height: 1.6;
+            color: #34495e;
+        }
+        
+        .example-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .example-content li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #fffde7;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 1200px) {
+            .card-container {
+                max-width: 800px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .examples {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-sticky-note"></i> 卡片笔记模板系统</h1>
+        <p class="subtitle">永久笔记记录核心知识，文献笔记整理研究资料，灵感笔记捕捉创意火花 - 构建您的个人知识管理系统</p>
+    </header>
+    
+    <div class="card-container">
+        <!-- 永久笔记卡片 -->
+        <div class="card permanent">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="card-title">
+                    <h2>永久笔记</h2>
+                    <p>记录经久不衰的核心知识与原理</p>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="input-group">
+                    <label for="permanent-title"><i class="fas fa-heading"></i> 核心概念</label>
+                    <input type="text" class="input-field" id="permanent-title" placeholder="例如：艾宾浩斯遗忘曲线">
+                </div>
+                
+                <div class="input-group">
+                    <label for="permanent-content"><i class="fas fa-book"></i> 详细解释</label>
+                    <textarea class="input-field" id="permanent-content" placeholder="描述该概念的核心内容..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="permanent-context"><i class="fas fa-link"></i> 关联概念</label>
+                    <input type="text" class="input-field" id="permanent-context" placeholder="例如：间隔重复、主动回忆">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-tags"></i> 标签</label>
+                    <div class="tags">
+                        <div class="tag">#认知科学</div>
+                        <div class="tag">#学习方法</div>
+                        <div class="tag">+ 添加</div>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="input-group">
+                    <label for="permanent-source"><i class="fas fa-bookmark"></i> 来源</label>
+                    <input type="text" class="input-field" id="permanent-source" placeholder="书籍、文章或课程来源">
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-save"><i class="fas fa-save"></i> 保存笔记</button>
+                    <button class="btn btn-clear"><i class="fas fa-eraser"></i> 清空</button>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div><i class="far fa-clock"></i> 最后更新: 刚刚</div>
+                <div><i class="fas fa-database"></i> ID: PN-2023-087</div>
+            </div>
+        </div>
+        
+        <!-- 文献笔记卡片 -->
+        <div class="card literature">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="card-title">
+                    <h2>文献笔记</h2>
+                    <p>整理研究资料与学术文献</p>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="input-group">
+                    <label for="literature-title"><i class="fas fa-book-open"></i> 文献标题</label>
+                    <input type="text" class="input-field" id="literature-title" placeholder="例如：Range: Why Generalists Triumph in a Specialized World">
+                </div>
+                
+                <div class="input-group">
+                    <label for="literature-author"><i class="fas fa-user-edit"></i> 作者</label>
+                    <input type="text" class="input-field" id="literature-author" placeholder="作者姓名">
+                </div>
+                
+                <div class="input-group">
+                    <label for="literature-summary"><i class="fas fa-file-alt"></i> 核心观点</label>
+                    <textarea class="input-field" id="literature-summary" placeholder="总结文献的核心观点..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="literature-quote"><i class="fas fa-quote-right"></i> 关键引用</label>
+                    <textarea class="input-field" id="literature-quote" placeholder="值得记录的重要引用..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="literature-ref"><i class="fas fa-info-circle"></i> 出版信息</label>
+                    <input type="text" class="input-field" id="literature-ref" placeholder="出版社, 出版年份, 页码">
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-save"><i class="fas fa-save"></i> 保存笔记</button>
+                    <button class="btn btn-clear"><i class="fas fa-eraser"></i> 清空</button>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div><i class="far fa-clock"></i> 最后更新: 刚刚</div>
+                <div><i class="fas fa-database"></i> ID: LN-2023-154</div>
+            </div>
+        </div>
+        
+        <!-- 灵感笔记卡片 -->
+        <div class="card idea">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="card-title">
+                    <h2>灵感笔记</h2>
+                    <p>捕捉转瞬即逝的创意与想法</p>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="input-group">
+                    <label for="idea-title"><i class="fas fa-pen"></i> 灵感主题</label>
+                    <input type="text" class="input-field" id="idea-title" placeholder="例如：AI辅助写作工具">
+                </div>
+                
+                <div class="input-group">
+                    <label for="idea-content"><i class="fas fa-comment-alt"></i> 详细描述</label>
+                    <textarea class="input-field" id="idea-content" placeholder="描述您的创意想法..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label for="idea-trigger"><i class="fas fa-bolt"></i> 触发场景</label>
+                    <input type="text" class="input-field" id="idea-trigger" placeholder="在什么情况下产生的想法？">
+                </div>
+                
+                <div class="input-group">
+                    <label for="idea-action"><i class="fas fa-tasks"></i> 行动建议</label>
+                    <input type="text" class="input-field" id="idea-action" placeholder="下一步可以做什么？">
+                </div>
+                
+                <div class="input-group">
+                    <label><i class="fas fa-tags"></i> 标签</label>
+                    <div class="tags">
+                        <div class="tag">#AI应用</div>
+                        <div class="tag">#产品创意</div>
+                        <div class="tag">+ 添加</div>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button class="btn btn-save"><i class="fas fa-save"></i> 保存笔记</button>
+                    <button class="btn btn-clear"><i class="fas fa-eraser"></i> 清空</button>
+                </div>
+            </div>
+            
+            <div class="card-footer">
+                <div><i class="far fa-clock"></i> 最后更新: 刚刚</div>
+                <div><i class="fas fa-database"></i> ID: IN-2023-231</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="examples">
+        <h2><i class="fas fa-book-open"></i> 笔记示例</h2>
+        <div class="example-cards">
+            <div class="example-card permanent-example">
+                <h3><i class="fas fa-infinity"></i> 永久笔记示例</h3>
+                <div class="example-content">
+                    <p><span class="highlight">核心概念：</span> 必要难度理论</p>
+                    <p><span class="highlight">详细解释：</span> 由认知科学家比约克夫妇提出的理论，指出学习时适当增加难度（如间隔练习、自我测试）可以提升长期记忆效果，因为更费力的提取过程能加强记忆痕迹。</p>
+                    <p><span class="highlight">关联概念：</span> 间隔重复 · 提取练习 · 合意困难</p>
+                    <p><span class="highlight">来源：</span> Bjork, R.A. (1994). Memory and metamemory considerations in the training of human beings.</p>
+                    <p><span class="highlight">标签：</span> #认知心理学 #学习方法 #记忆理论</p>
+                </div>
+            </div>
+            
+            <div class="example-card literature-example">
+                <h3><i class="fas fa-book"></i> 文献笔记示例</h3>
+                <div class="example-content">
+                    <p><span class="highlight">文献标题：</span> Range: Why Generalists Triumph in a Specialized World</p>
+                    <p><span class="highlight">作者：</span> David Epstein</p>
+                    <p><span class="highlight">核心观点：</span> 在专业化日益受到推崇的今天，拥有广泛经验和跨领域知识的通才往往在解决复杂问题和创新方面表现更出色。</p>
+                    <p><span class="highlight">关键引用：</span> "在认知要求高的领域，先广后专往往比早期专业化更有效。广泛的经验为专业知识提供了更多可连接的节点。" (p.78)</p>
+                    <p><span class="highlight">出版信息：</span> Riverhead Books, 2019</p>
+                </div>
+            </div>
+            
+            <div class="example-card idea-example">
+                <h3><i class="fas fa-lightbulb"></i> 灵感笔记示例</h3>
+                <div class="example-content">
+                    <p><span class="highlight">灵感主题：</span> 知识管理浏览器插件</p>
+                    <p><span class="highlight">详细描述：</span> 开发一款浏览器插件，能够在用户浏览网页时一键保存内容到知识库，自动提取关键词并生成知识图谱关系。</p>
+                    <p><span class="highlight">触发场景：</span> 阅读在线文章时，发现需要多次切换窗口才能保存重要内容到笔记软件。</p>
+                    <p><span class="highlight">行动建议：</span> 
+                        <ul>
+                            <li>调研现有类似工具的功能缺口</li>
+                            <li>设计浏览器插件原型</li>
+                            <li>寻找前端开发合作伙伴</li>
+                        </ul>
+                    </p>
+                    <p><span class="highlight">标签：</span> #产品创意 #知识管理 #浏览器插件</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 添加简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 卡片悬停效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 标签点击效果
+            const tags = document.querySelectorAll('.tag');
+            tags.forEach(tag => {
+                tag.addEventListener('click', function(e) {
+                    if (this.textContent.includes('添加')) {
+                        const newTag = prompt('请输入新标签（以#开头）:');
+                        if (newTag && newTag.trim() !== '') {
+                            const tagElement = document.createElement('div');
+                            tagElement.className = 'tag';
+                            tagElement.textContent = newTag;
+                            this.parentNode.insertBefore(tagElement, this);
+                        }
+                    } else {
+                        this.style.backgroundColor = '#4fc3f7';
+                        this.style.color = 'white';
+                        setTimeout(() => {
+                            this.style.backgroundColor = '';
+                            this.style.color = '';
+                        }, 500);
+                    }
+                });
+            });
+            
+            // 保存按钮效果
+            const saveButtons = document.querySelectorAll('.btn-save');
+            saveButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.card');
+                    const footer = card.querySelector('.card-footer');
+                    
+                    this.innerHTML = '<i class="fas fa-check"></i> 已保存';
+                    this.style.backgroundColor = '#2ecc71';
+                    
+                    footer.innerHTML = '<div><i class="far fa-clock"></i> 最后更新: 刚刚</div><div><i class="fas fa-database"></i> ' + footer.querySelector('div:last-child').textContent + '</div>';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-save"></i> 保存笔记';
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                });
+            });
+            
+            // 清空按钮效果
+            const clearButtons = document.querySelectorAll('.btn-clear');
+            clearButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const cardContent = this.closest('.card-content');
+                    const inputs = cardContent.querySelectorAll('input, textarea');
+                    
+                    if (confirm('确定要清空所有内容吗？')) {
+                        inputs.forEach(input => {
+                            input.value = '';
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
