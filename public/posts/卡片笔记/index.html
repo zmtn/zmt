@@ -91,8 +91,8 @@
     
     
   </strong>
-  <span> • 249 words</span>
-  <span> • 2 minute read</span>
+  <span> • 476 words</span>
+  <span> • 3 minute read</span>
   
   
 </div>
@@ -196,6 +196,72 @@ flowchart TD
         IC2 --&gt;|&quot;实时步骤分解+错因可视化&quot;| IC3[&quot;**可行性**&quot;]
         IC3 --&gt;|&quot;✔ 已有NLP技术&lt;br&gt;✖ 需教育专家参与&quot;| IC4[&quot;🔍&quot;]
     end
+</code></pre><hr>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">
+flowchart TD
+    %% ===== 唯一标识区域 =====
+    subgraph 唯一标识[&quot; &quot;]
+        direction LR
+        id1[&quot;[201910091809]&quot;]
+    end
+
+    %% ===== 核心观点区域 =====
+    subgraph 核心观点[&quot; &quot;]
+        direction TB
+        point1[&quot;Struggling when you acquire a skill could be important to become great in your field&quot;]
+    end
+
+    %% ===== 标签区域 =====
+    subgraph 标签[&quot; &quot;]
+        direction LR
+        tag1[&quot;#expertise&quot;]
+        tag2[&quot;#innovation&quot;]
+        tag1 --- tag2
+    end
+
+    %% ===== 论证区域 =====
+    subgraph 论证[&quot; &quot;]
+        direction TB
+        arg1[&quot;• Being good at something is not enough to be an innovator&quot;]
+        arg2[&quot;- Savants excel at their skill without innovating [2019100917461]&quot;]
+        arg3[&quot;- So merely being good at something is not enough to innovate and be creative&quot;]
+        arg4[&quot;• Self-taught jazz musicians sound more interesting than their peers from jazz music school [201910091737]&quot;]
+        arg5[&quot;- 'More interesting' can entail being more creative, too&quot;]
+        arg6[&quot;- Epstein writes about a lot of great musicians being self-taught [Chapter 3] [#Epstein2019range]&quot;]
+        
+        arg1 --&gt; arg2 --&gt; arg3
+        arg4 --&gt; arg5 --&gt; arg6
+    end
+
+    %% ===== 参考文献区域 =====
+    subgraph 参考文献[&quot; &quot;]
+        direction LR
+        ref1[&quot;[#epstein2019range]: David Epstein (2019): Range. why generalists triumph in a specialized world, New York: Riverhead Books.&quot;]
+    end
+
+    %% ===== 分隔线 =====
+    sep1[&quot;---&quot;]:::dashed
+
+    %% ===== 底部标签 =====
+    subgraph 底部标签[&quot; &quot;]
+        direction LR
+        footer1[&quot;Links&quot;]
+        footer2[&quot;Body&quot;]
+        footer3[&quot;References&quot;]
+        footer1 --- footer2 --- footer3
+    end
+
+    %% ===== 连接关系 =====
+    唯一标识 --&gt; 核心观点
+    核心观点 --&gt; 标签
+    标签 --&gt; sep1
+    sep1 --&gt; 论证
+    论证 --&gt; 参考文献
+    参考文献 --&gt; 底部标签
+    
+    %% ===== 样式定义 =====
+    classDef dashed stroke-dasharray: 5 5;
+
 </code></pre></div>
     </article>
   </main>
