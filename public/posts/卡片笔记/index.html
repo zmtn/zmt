@@ -91,8 +91,8 @@
     
     
   </strong>
-  <span> • 126 words</span>
-  <span> • 1 minute read</span>
+  <span> • 249 words</span>
+  <span> • 2 minute read</span>
   
   
 </div>
@@ -152,6 +152,50 @@ graph TD
     A --&gt; F[自己的理解或感想]
     F --&gt; F1[感想1]
 
+</code></pre><hr>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">
+flowchart TD
+    %% ===== 1. 知识卡片（概念型） =====
+    subgraph 知识卡片[&quot;📚 知识卡片：神经网络&quot;]
+        direction TB
+        KC1[&quot;**核心概念**&quot;] --&gt;|&quot;仿生人脑结构的机器学习模型&quot;| KC2[&quot;**关键特征**&quot;]
+        KC2 --&gt;|&quot;• 分层结构&lt;br&gt;• 反向传播&lt;br&gt;• 非线性激活&quot;| KC3[&quot;**应用场景**&quot;]
+        KC3 --&gt;|&quot;◉ 图像识别&lt;br&gt;◉ 自然语言处理&quot;| KC4[&quot;**关联概念**&quot;]
+        KC4 --&gt;|&quot;[[深度学习]]&lt;br&gt;[[卷积神经网络]]&quot;| KC5[&quot;💡&quot;]
+    end
+
+    %% ===== 2. 读书卡片（文献型） =====
+    subgraph 读书卡片[&quot;📖 读书卡片：《原子习惯》&quot;]
+        direction LR
+        BC1[&quot;**核心观点**&quot;] --&gt;|&quot;微小改变带来复利效应&quot;| BC2[&quot;**金句摘录**&quot;]
+        BC2 --&gt;|&quot;『你每月的进步是1%，一年后你会强37倍』&quot;| BC3[&quot;**实践指南**&quot;]
+        BC3 --&gt;|&quot;• 两分钟法则&lt;br&gt;• 习惯追踪表&quot;| BC4[&quot;**关联书籍**&quot;]
+        BC4 --&gt;|&quot;《掌控习惯》&lt;br&gt;《微习惯》&quot;| BC5[&quot;📌&quot;]
+    end
+
+    %% ===== 3. 人物卡片（传记型） =====
+    subgraph 人物卡片[&quot;👤 人物卡片：埃隆·马斯克&quot;]
+        direction BT
+        PC1[&quot;**核心贡献**&quot;] --&gt;|&quot;• SpaceX&lt;br&gt;• Tesla&lt;br&gt;• Neuralink&quot;| PC2[&quot;**思想体系**&quot;]
+        PC2 --&gt;|&quot;第一性原理&lt;br&gt;多行星物种&quot;| PC3[&quot;**关键事件**&quot;]
+        PC3 --&gt;|&quot;2002年出售PayPal&lt;br&gt;2018年火箭回收&quot;| PC4[&quot;🗃️&quot;]
+    end
+
+    %% ===== 4. 项目卡片（任务型） =====
+    subgraph 项目卡片[&quot;✅ 项目卡片：APP重构&quot;]
+        direction RL
+        PR1[&quot;**核心目标**&quot;] --&gt;|&quot;提升30%响应速度&quot;| PR2[&quot;**关键节点**&quot;]
+        PR2 --&gt;|&quot;▢ 架构设计(6月)&lt;br&gt;▢ 代码重构(7月)&lt;br&gt;✅ 测试(8月)&quot;| PR3[&quot;**资源需求**&quot;]
+        PR3 --&gt;|&quot;前端2人&lt;br&gt;预算$15k&quot;| PR4[&quot;📅&quot;]
+    end
+
+    %% ===== 5. 灵感卡片（创意型） =====
+    subgraph 灵感卡片[&quot;💡 灵感卡片：AI教育助手&quot;]
+        direction TB
+        IC1[&quot;**触发场景**&quot;] --&gt;|&quot;观察到学生解题步骤混乱&quot;| IC2[&quot;**核心创意**&quot;]
+        IC2 --&gt;|&quot;实时步骤分解+错因可视化&quot;| IC3[&quot;**可行性**&quot;]
+        IC3 --&gt;|&quot;✔ 已有NLP技术&lt;br&gt;✖ 需教育专家参与&quot;| IC4[&quot;🔍&quot;]
+    end
 </code></pre></div>
     </article>
   </main>
