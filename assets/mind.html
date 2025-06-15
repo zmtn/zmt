@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级卡片笔记系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px 60px;
+            color: #333;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #3498db, #2ecc71, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #ecf0f1;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            width: 100%;
+            max-width: 1400px;
+            margin-bottom: 50px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            width: 380px;
+            transition: all 0.4s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .card-header {
+            padding: 20px 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .permanent .card-header {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+        }
+        
+        .literature .card-header {
+            background: linear-gradient(135deg, #27ae60 0%, #16a085 100%);
+        }
+        
+        .idea .card-header {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+        }
+        
+        .card-icon {
+            font-size: 28px;
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-title {
+            flex: 1;
+        }
+        
+        .card-title h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .card-title p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+        }
+        
+        .tab-container {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid #3498db;
+            color: #3498db;
+        }
+        
+        .editor-container, .preview-container {
+            display: none;
+            flex: 1;
+            flex-direction: column;
+        }
+        
+        .editor-container.active, .preview-container.active {
+            display: flex;
+        }
+        
+        .editor {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: none;
+            margin-bottom: 15px;
+            transition: border 0.3s;
+        }
+        
+        .editor:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .preview {
+            flex: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+        }
+        
+        .preview img {
+            max-width: 100%;
+        }
+        
+        .mermaid {
+            text-align: center;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .preview h1, .preview h2, .preview h3 {
+            margin-top: 1.2em;
+            margin-bottom: 0.8em;
+        }
+        
+        .preview ul, .preview ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .preview code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        .preview pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .preview blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 15px 0;
+            color: #555;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        
+        .tag {
+            background: #e0f7fa;
+            color: #0097a7;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tag:hover {
+            background: #b2ebf2;
+            transform: scale(1.05);
+        }
+        
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+            padding-top: 15px;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-save {
+            background: #3498db;
+            color: white;
+        }
+        
+        .btn-save:hover {
+            background: #2980b9;
+        }
+        
+        .btn-export {
+            background: #9b59b6;
+            color: white;
+        }
+        
+        .btn-export:hover {
+            background: #8e44ad;
+        }
+        
+        .btn-clear {
+            background: #f5f5f5;
+            color: #7f8c8d;
+        }
+        
+        .btn-clear:hover {
+            background: #e0e0e0;
+        }
+        
+        .card-footer {
+            background: #f8f9fa;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .examples {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .examples h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+            font-size: 1.8rem;
+        }
+        
+        .example-cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .example-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid;
+        }
+        
+        .permanent-example {
+            border-color: #3498db;
+        }
+        
+        .literature-example {
+            border-color: #27ae60;
+        }
+        
+        .idea-example {
+            border-color: #9b59b6;
+        }
+        
+        .example-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2c3e50;
+        }
+        
+        .example-content {
+            line-height: 1.6;
+            color: #34495e;
+        }
+        
+        .example-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .example-content li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #fffde7;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .markdown-guide {
+            margin-top: 40px;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+        }
+        
+        .markdown-guide h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+        }
+        
+        .guide-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .guide-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .guide-section h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .guide-table th, .guide-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .guide-table th {
+            background: #e3f2fd;
+            color: #2c3e50;
+        }
+        
+        .guide-table tr:hover {
+            background: #f1f8ff;
+        }
+        
+        @media (max-width: 1200px) {
+            .card-container {
+                max-width: 800px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .examples, .markdown-guide {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-sticky-note"></i> Markdown & Mermaid 卡片笔记系统</h1>
+        <p class="subtitle">支持Markdown语法编辑、Mermaid图表渲染、实时预览与导出图片功能 - 构建您的知识管理系统</p>
+    </header>
+    
+    <div class="card-container">
+        <!-- 永久笔记卡片 -->
+        <div class="card permanent">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="card-title">
+                    <h2>永久笔记</h2>
+                    <p>记录核心知识与原理</p>
+                </div>
+            </div>
+            
+            <div class="card-content">
+                <div class="tab-container">
+                    <div class="tab active" data-tab="editor-permanent">编辑</div>
+                    <div class="tab" data-tab="preview-permanent">预览</div>
+                </div>
+                
+                <div class="editor-container active" id="editor-permanent">
+                    <textarea class="editor" id="permanent-editor"># 必要难度理论
+
+**核心概念**：认知科学家比约克夫妇提出的学习理论
+
+## 核心观点
+- 学习时适当增加难度（如间隔练习、自我测试）可以提升长期记忆效果
+- 更费力的提取过程能加强记忆痕迹
+- 与「轻松学习但快速遗忘」形成对比
+
+```mermaid
+graph LR
+    A[学习内容] --> B{学习方式}
+    B -->|必要难度| C[间隔练习]
+    B -->|必要难度| D[自我测试]
+    B -->|必要难度| E[交错学习]
+    C --> F[长期记忆增强]
+    D --> F
+    E --> F

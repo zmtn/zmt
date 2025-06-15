@@ -91,7 +91,7 @@
     
     
   </strong>
-  <span> • 478 words</span>
+  <span> • 632 words</span>
   <span> • 3 minute read</span>
   
   
@@ -117,7 +117,8 @@
     end
     A1 --&gt; A2
 
-</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
+</code></pre><hr>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">graph TD
     A[卡片标题] --&gt; B[主要内容]
     B --&gt; C[关键点1]
     B --&gt; D[关键点2]
@@ -141,7 +142,8 @@
     E --&gt; E3[事件3]
     A --&gt; F[背后的主题或意义]
     F --&gt; F1[主题1]
-</code></pre><pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">
+</code></pre><hr>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">
 graph TD
     A[概念名称] --&gt; B[书籍名称]
     A --&gt; C[页码]
@@ -266,7 +268,71 @@ flowchart TD
 <blockquote>
 <p>相关的模版</p>
 </blockquote>
-<p><a href="../../assets/card.html">card</a></p></div>
+<pre tabindex="0"><code class="language-mermaid" data-lang="mermaid">flowchart TD
+    %% ===== 卡片笔记系统 =====
+    subgraph 卡片笔记系统[卡片笔记系统]
+        direction TB
+        
+        标题[卡片笔记系统] --&gt; 副标题[支持Markdown与Mermaid语法]
+        
+        %% 永久笔记 - 使用垂直布局
+        subgraph 永久笔记[永久笔记]
+            direction TB
+            PN1[核心概念 必要难度理论]
+            PN2[核心观点 学习时增加难度提升记忆]
+            PN3[应用场景 间隔练习自我测试]
+            PN4[图表 流程图示例]
+            PN5[标签 认知科学 学习方法]
+            
+            PN1 --&gt; PN2 --&gt; PN3 --&gt; PN4 --&gt; PN5
+        end
+        
+        %% 文献笔记 - 使用水平布局
+        subgraph 文献笔记[文献笔记]
+            direction LR
+            LN1[文献 Range Why Generalists Triumph]
+            LN2[作者 David Epstein 2019]
+            LN3[核心论点 通才解决复杂问题更出色]
+            LN4[图表 饼图示例]
+            LN5[标签 通才 创新]
+            
+            LN1 --&gt; LN2 --&gt; LN3 --&gt; LN4 --&gt; LN5
+        end
+        
+        %% 灵感笔记 - 使用垂直布局
+        subgraph 灵感笔记[灵感笔记]
+            direction TB
+            IN1[创意 知识管理浏览器插件]
+            IN2[触发场景 阅读时需多次切换保存]
+            IN3[核心功能 一键保存自动提取]
+            IN4[图表 系统流程图]
+            IN5[标签 产品创意 AI应用]
+            
+            IN1 --&gt; IN2 --&gt; IN3 --&gt; IN4 --&gt; IN5
+        end
+        
+        %% 功能区
+        永久笔记 --&gt; 功能区[功能区]
+        文献笔记 --&gt; 功能区
+        灵感笔记 --&gt; 功能区
+        功能区 --&gt; 导出按钮[导出为图片]
+        导出按钮 --&gt; 预览按钮[预览内容]
+    end
+    
+    %% 样式定义
+    classDef title fill:#2c3e50,stroke:#3498db,stroke-width:2px,color:white;
+    classDef permanent fill:#e3f2fd,stroke:#1e88e5;
+    classDef literature fill:#e8f5e9,stroke:#43a047;
+    classDef idea fill:#f3e5f5,stroke:#9c27b0;
+    classDef function fill:#fffde7,stroke:#f57f17;
+    
+    class 标题,副标题 title;
+    class 永久笔记 permanent;
+    class 文献笔记 literature;
+    class 灵感笔记 idea;
+    class 功能区,导出按钮,预览按钮 function;
+
+</code></pre></div>
     </article>
   </main>
 
